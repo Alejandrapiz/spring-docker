@@ -1,6 +1,6 @@
-FROM openjdk:11-jre-slim
-VOLUME /tmp
-ARG JAR_FILE=target/demo-0.0.1-SNAPSHOT.jar
+FROM eclipse-temurin:17-jre
+WORKDIR /app
+ARG JAR_FILE=target/*.jar
 COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
-RUN usermod -aG docker jenkins
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","/app/app.jar"]
